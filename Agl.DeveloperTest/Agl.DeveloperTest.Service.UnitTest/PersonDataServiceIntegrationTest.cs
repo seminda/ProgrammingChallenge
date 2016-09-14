@@ -14,14 +14,6 @@ namespace Agl.DeveloperTest.Service.UnitTest
         {
             _client = new Mock<HttpClient>();
 
-            //TODO: Need to do a alternative way to fix the mocking issue to complete the unit testing
-            //var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK);
-            //response.Content = new StringContent(System.IO.File.ReadAllText(@"SampleData.txt"));
-
-
-            //_client.Setup(f => f.GetAsync(It.IsAny<string>()))
-            //    .ReturnsAsync(response);
-
         }
         [TestMethod]
         public void Test_Success_DataAccess()
