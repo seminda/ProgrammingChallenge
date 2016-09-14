@@ -1,26 +1,32 @@
 ﻿using Agl.DeveloperTest.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Agl.DeveloperTest.Display
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             RunAsync().Wait();
             Console.Read();
         }
 
-        static async Task RunAsync()
+        private static async Task RunAsync()
         {
             var persernService = ServiceManagerFactory.GetPersernService();
             var result = await persernService.GetPersonData();
+            foreach (var item in result)
+            {
+                Console.WriteLine(item.Name);
+                foreach (var pet in item.Pets)
+                {
+                    Console.WriteLine($"    {pet}");
+                }
+                Console.WriteLine("");
+                Console.WriteLine("");
+            }
 
-           
         }
     }
 }
