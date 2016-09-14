@@ -18,10 +18,15 @@ namespace Agl.DeveloperTest.Service
         private const string MediaType = "application/json";
         private const string ServiceName = "ServiceName";
 
+        private readonly HttpClient _client;
+        public PersonService(HttpClient client)
+        {
+            _client = client;
+        }
 
         async Task<List<PersonPets>> IPersonService.GetPersonData()
         {
-            using (var client = new HttpClient())
+            using (var client = _client)
             {
                 client.BaseAddress = new Uri(ConfigurationManager.AppSettings[ServiceUrlKey]);
                 client.DefaultRequestHeaders.Accept.Clear();
